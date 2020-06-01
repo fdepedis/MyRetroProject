@@ -14,12 +14,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
+public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.CustomViewHolder> {
 
     private List<RetroPhoto> dataList;
     private Context context;
 
-    public CustomAdapter(Context context, List<RetroPhoto> dataList){
+    public PhotoAdapter(Context context, List<RetroPhoto> dataList){
         this.context = context;
         this.dataList = dataList;
     }
@@ -43,7 +43,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.custom_row, parent, false);
+        View view = layoutInflater.inflate(R.layout.photo_row, parent, false);
         return new CustomViewHolder(view);
     }
 

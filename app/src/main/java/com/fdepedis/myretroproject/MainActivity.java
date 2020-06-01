@@ -8,7 +8,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.fdepedis.myretroproject.adapter.CustomAdapter;
+import com.fdepedis.myretroproject.adapter.PhotoAdapter;
 import com.fdepedis.myretroproject.model.RetroPhoto;
 import com.fdepedis.myretroproject.network.GetDataService;
 import com.fdepedis.myretroproject.network.RetrofitClientInstance;
@@ -20,7 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    private CustomAdapter adapter;
+    private PhotoAdapter adapter;
     private RecyclerView recyclerView;
     ProgressDialog progressDoalog;
 
@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
 
     /*Method to generate List of data using RecyclerView with custom adapter*/
     private void generateDataList(List<RetroPhoto> photoList) {
-        recyclerView = findViewById(R.id.customRecyclerView);
-        adapter = new CustomAdapter(this,photoList);
+        recyclerView = findViewById(R.id.photoRecyclerView);
+        adapter = new PhotoAdapter(this,photoList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
