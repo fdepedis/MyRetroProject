@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyRetroProject</string>
+
+    <string name="btnPhoto">Photo</string>
+    <string name="btnPost">Post</string>
+
 </resources>

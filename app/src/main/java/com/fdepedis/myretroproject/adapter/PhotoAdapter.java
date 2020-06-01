@@ -11,10 +11,9 @@ import com.fdepedis.myretroproject.R;
 import com.fdepedis.myretroproject.model.RetroPhoto;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
-public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.CustomViewHolder> {
+public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder> {
 
     private List<RetroPhoto> dataList;
     private Context context;
@@ -24,14 +23,14 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.CustomViewHo
         this.dataList = dataList;
     }
 
-    class CustomViewHolder extends RecyclerView.ViewHolder {
+    class PhotoViewHolder extends RecyclerView.ViewHolder {
 
         public final View mView;
 
         TextView txtTitle;
         private ImageView coverImage;
 
-        CustomViewHolder(View itemView) {
+        PhotoViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
 
@@ -41,14 +40,14 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.CustomViewHo
     }
 
     @Override
-    public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PhotoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.photo_row, parent, false);
-        return new CustomViewHolder(view);
+        return new PhotoViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CustomViewHolder holder, int position) {
+    public void onBindViewHolder(PhotoViewHolder holder, int position) {
         holder.txtTitle.setText(dataList.get(position).getTitle());
 
         Picasso.Builder builder = new Picasso.Builder(context);

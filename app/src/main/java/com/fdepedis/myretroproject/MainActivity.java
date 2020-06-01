@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.fdepedis.myretroproject.adapter.PhotoAdapter;
@@ -21,44 +24,34 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private PhotoAdapter adapter;
-    private RecyclerView recyclerView;
-    ProgressDialog progressDoalog;
+    Button btnPhoto;
+    Button btnPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        progressDoalog = new ProgressDialog(MainActivity.this);
-        progressDoalog.setMessage("Loading....");
-        progressDoalog.show();
+        btnPhoto = findViewById(R.id.btnPhoto);
+        btnPost = findViewById(R.id.btnPost);
 
-        /*Create handle for the RetrofitInstance interface*/
-        GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
-        Call<List<RetroPhoto>> call = service.getAllPhotos();
-        call.enqueue(new Callback<List<RetroPhoto>>() {
+        btnPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<List<RetroPhoto>> call, Response<List<RetroPhoto>> response) {
-                progressDoalog.dismiss();
-                generateDataList(response.body());
-            }
+            public void onClick(View view) {
 
-            @Override
-            public void onFailure(Call<List<RetroPhoto>> call, Throwable t) {
-                progressDoalog.dismiss();
-                Toast.makeText(MainActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                Intent btnIntentPhoto = new Intent(getApplicationContext(), PhotoActivity.class);
+                startActivity(btnIntentPhoto);
             }
         });
-    }
 
-    /*Method to generate List of data using RecyclerView with custom adapter*/
-    private void generateDataList(List<RetroPhoto> photoList) {
-        recyclerView = findViewById(R.id.photoRecyclerView);
-        adapter = new PhotoAdapter(this,photoList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        btnPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent btnIntentPost = new Intent(getApplicationContext(), PostActivity.class);
+                startActivity(btnIntentPost);
+            }
+        });
     }
 
 }
