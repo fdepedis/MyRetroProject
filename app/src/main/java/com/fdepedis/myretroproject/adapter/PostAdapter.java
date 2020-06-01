@@ -15,10 +15,10 @@ import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
-    private List<RetroPhoto> dataList;
+    private List<RetroPost> dataList;
     private Context context;
 
-    public PostAdapter(Context context, List<RetroPhoto> dataList){
+    public PostAdapter(Context context, List<RetroPost> dataList){
         this.context = context;
         this.dataList = dataList;
     }
@@ -27,13 +27,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         public final View mView;
 
         TextView txtTitle;
+        TextView txtBody;
 
         PostViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
 
             txtTitle = mView.findViewById(R.id.title);
-
+            txtBody = mView.findViewById(R.id.body);
         }
     }
 
@@ -46,9 +47,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(PostViewHolder holder, int position) {
-        holder.txtTitle.setText(dataList.get(position).getTitle());
 
+        String id = String.valueOf(dataList.get(position).getId());
+        String title = dataList.get(position).getTitle();
 
+        holder.txtTitle.setText(id + " - " + title);
+        holder.txtBody.setText(dataList.get(position).getBody());
     }
 
     @Override
