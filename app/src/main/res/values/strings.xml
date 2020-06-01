@@ -4,4 +4,7 @@
     <string name="btnPhoto">Photo</string>
     <string name="btnPost">Post</string>
 
+    <string name="photoActivityLabel">Photo</string>
+    <string name="postActivityLabel">Post</string>
+
 </resources>
