@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.fdepedis.myretroproject.R;
 import com.fdepedis.myretroproject.model.RetroPhoto;
@@ -24,7 +25,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
     }
 
     class PhotoViewHolder extends RecyclerView.ViewHolder {
-
         public final View mView;
 
         TextView txtTitle;
@@ -48,6 +48,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
     @Override
     public void onBindViewHolder(PhotoViewHolder holder, int position) {
+
         holder.txtTitle.setText(dataList.get(position).getTitle());
 
         Picasso.Builder builder = new Picasso.Builder(context);
@@ -56,7 +57,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
                 .placeholder((R.drawable.ic_launcher_background))
                 .error(R.drawable.ic_launcher_background)
                 .into(holder.coverImage);
-
     }
 
     @Override

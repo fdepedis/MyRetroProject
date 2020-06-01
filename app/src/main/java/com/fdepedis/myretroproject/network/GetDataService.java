@@ -1,7 +1,7 @@
 package com.fdepedis.myretroproject.network;
 
 import com.fdepedis.myretroproject.model.RetroPhoto;
-import com.fdepedis.myretroproject.model.RetroPosts;
+import com.fdepedis.myretroproject.model.RetroPost;
 
 import java.util.List;
 import retrofit2.Call;
@@ -13,5 +13,5 @@ public interface GetDataService {
     Call<List<RetroPhoto>> getAllPhotos();
 
     @GET("/posts")
-    Call<List<RetroPosts>> getAllPosts();
+    Call<List<RetroPost>> getAllPosts();
 }

@@ -2,7 +2,7 @@ package com.fdepedis.myretroproject.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class RetroPosts {
+public class RetroPost {
 
     @SerializedName("userId")
     private Integer userId;
@@ -13,8 +13,7 @@ public class RetroPosts {
     @SerializedName("body")
     private String body;
 
-
-    public RetroPosts(Integer userId, Integer id, String title, String body ) {
+    public RetroPost(Integer userId, Integer id, String title, String body ) {
         this.userId = userId;
         this.id = id;
         this.title = title;
